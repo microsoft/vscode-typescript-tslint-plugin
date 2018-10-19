@@ -1,0 +1,43 @@
+{
+    "name": "vscode-typescript-tslint-plugin",
+    "private": true,
+    "preview": true,
+    "displayName": "lit-html",
+    "description": "Provides TSLint support using the typescript-tslint-plugin",
+    "version": "0.0.1",
+    "publisher": "microsoft",
+    "icon": "docs/icon.png",
+    "license": "MIT",
+    "galleryBanner": {
+        "color": "#fcfcfc",
+        "theme": "light"
+    },
+    "repository": {
+        "url": "https://github.com/Microsoft/vscode-typescript-tslint-plugin.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Microsoft/vscode-typescript-tslint-plugin/issues"
+    },
+    "engines": {
+        "vscode": "^1.15.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "tslint",
+        "typescript",
+        "lint",
+        "ts"
+    ],
+    "contributes": {
+        "typescriptServerPlugins": [
+            {
+                "name": "typescript-tslint-plugin"
+            }
+        ]
+    },
+    "dependencies": {
+        "typescript-tslint-plugin": "0.0.2"
+    }
+}
