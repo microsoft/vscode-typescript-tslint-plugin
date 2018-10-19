@@ -31,6 +31,53 @@
         "ts"
     ],
     "contributes": {
+        "jsonValidation": [
+            {
+                "fileMatch": "tslint.json",
+                "url": "http://json.schemastore.org/tslint"
+            }
+        ],
+        "problemPatterns": [
+            {
+                "name": "tslint4",
+                "regexp": "^(\\(\\S*\\)\\s+)?(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+                "file": 2,
+                "line": 3,
+                "column": 4,
+                "message": 5
+            },
+            {
+                "name": "tslint5",
+                "regexp": "^(WARNING|ERROR):(\\s+\\(\\S*\\))?\\s+(\\S.*)\\[(\\d+), (\\d+)\\]:\\s+(.*)$",
+                "severity": 1,
+                "file": 3,
+                "line": 4,
+                "column": 5,
+                "message": 6
+            }
+        ],
+        "problemMatchers": [
+            {
+                "name": "tslint4",
+                "label": "tslint (version 4) warnings",
+                "owner": "tslint",
+                "source": "tslint",
+                "applyTo": "closedDocuments",
+                "fileLocation": "absolute",
+                "severity": "warning",
+                "pattern": "$tslint4"
+            },
+            {
+                "name": "tslint5",
+                "owner": "tslint",
+                "source": "tslint",
+                "label": "tslint (version 5) warnings",
+                "applyTo": "closedDocuments",
+                "fileLocation": "absolute",
+                "severity": "warning",
+                "pattern": "$tslint5"
+            }
+        ],
         "typescriptServerPlugins": [
             {
                 "name": "typescript-tslint-plugin"
