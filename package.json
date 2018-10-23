@@ -5,7 +5,7 @@
     "displayName": "lit-html",
     "description": "Provides TSLint support using the typescript-tslint-plugin",
     "version": "0.0.1",
-    "publisher": "microsoft",
+    "publisher": "ms-vscode",
     "icon": "docs/icon.png",
     "license": "MIT",
     "galleryBanner": {
@@ -85,6 +85,6 @@
         ]
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.0.2"
+        "typescript-tslint-plugin": "0.0.3"
     }
 }

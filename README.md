@@ -1,4 +1,4 @@
-[![](https://vsmarketplacebadge.apphb.com/version/microsoft.vscode-typescript-tslint-plugin.svg)](https://marketplace.visualstudio.com/items?itemName=microsoft.vscode-typescript-tslint-plugin)
+[![](https://vsmarketplacebadge.apphb.com/version/ms-vscode.vscode-typescript-tslint-plugin.svg)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-typescript-tslint-plugin)
 
 Adds [tslint](https://github.com/palantir/tslint) to VS Code using a [TypeScript language service plugin](https://github.com/Microsoft/typescript-tslint-plugin).
 
