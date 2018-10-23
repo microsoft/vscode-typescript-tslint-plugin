@@ -85,6 +85,6 @@
         ]
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.0.3"
+        "typescript-tslint-plugin": "0.0.4"
     }
 }
