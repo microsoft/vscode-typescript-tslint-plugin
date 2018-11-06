@@ -19,8 +19,6 @@ If you are [using a workspace version of typescript](https://code.visualstudio.c
 
 - vscode-tslint can only lint one file a time. It therefore cannot support [semantic tslint rules](https://palantir.github.io/tslint/usage/type-checking/) that require the type checker. The language service plugin doesn't have this limitation. To overcome this limitation is a key motivation for reimplementing the extension.
 
-- The TSLint extension bundles a tslint and typescript version. 
-
 
 [vscode-tslint]: https://marketplace.visualstudio.com/items?itemName=eg2.tslint
 [usage]: https://github.com/Microsoft/typescript-tslint-plugin#usage
