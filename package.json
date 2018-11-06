@@ -31,6 +31,14 @@
         "ts"
     ],
     "contributes": {
+        "languages": [
+            {
+                "id": "jsonc",
+                "filenames": [
+                    "tslint.json"
+                ]
+            }
+        ],
         "jsonValidation": [
             {
                 "fileMatch": "tslint.json",
