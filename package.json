@@ -1,10 +1,10 @@
 {
     "name": "vscode-typescript-tslint-plugin",
+    "version": "0.0.3",
     "private": true,
     "preview": true,
     "displayName": "TypeScript TSLint Plugin",
     "description": "Provides TSLint support using the typescript-tslint-plugin",
-    "version": "0.0.2",
     "publisher": "ms-vscode",
     "icon": "docs/icon.png",
     "license": "MIT",
@@ -93,6 +93,6 @@
         ]
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.0.4"
+        "typescript-tslint-plugin": "0.0.5"
     }
 }
