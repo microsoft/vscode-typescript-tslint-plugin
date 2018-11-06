@@ -9,11 +9,11 @@ Please refer to the [tslint documentation](https://github.com/palantir/tslint) f
 
 This extension works out of the box with VS Code's built-in version of TypeScript. You do not need to configure the plugin in your `tsconfig.json` if you are using VS Code's version of TypeScript.
 
-If you are [using a workspace version of typescript](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions), you must currently configure the TS Server plugin manually by following [these instructions](https://github.com/Microsoft/typescript-lit-html-plugin#usage)
+If you are [using a workspace version of typescript](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions), you must currently configure the TS Server plugin manually by following [these instructions][usage]
 
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
-- Configuration options for TSLint are specified [inside the `tsconfig.json`](https://github.com/Microsoft/typescript-lit-html-plugin#usage).
+- Configuration options for TSLint are specified [inside the `tsconfig.json`][usage].
 
 - The implementation as a TypeScript server plugin enables to shares the program representation with TypeScript. This is more efficient than the current vscode-tslint implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 
 
@@ -23,3 +23,4 @@ If you are [using a workspace version of typescript](https://code.visualstudio.c
 
 
 [vscode-tslint]: https://marketplace.visualstudio.com/items?itemName=eg2.tslint
+[usage]: https://github.com/Microsoft/typescript-tslint-plugin#usage
