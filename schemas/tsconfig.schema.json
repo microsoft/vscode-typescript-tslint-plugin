@@ -15,8 +15,11 @@
                                     "enum": [
                                         "typescript-tslint-plugin"
                                     ]
-                                },
-                            }
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ]
                         },
                         "then": {
                             "properties": {
