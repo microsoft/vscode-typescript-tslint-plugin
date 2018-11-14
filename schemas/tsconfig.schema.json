@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "TS Lint plugin contributions to package.json",
+    "type": "object",
+    "properties": {
+        "compilerOptions": {
+            "type": "object",
+            "properties": {
+                "plugins": {
+                    "type": "array",
+                    "items": {
+                        "if": {
+                            "properties": {
+                                "name": {
+                                    "enum": [
+                                        "typescript-tslint-plugin"
+                                    ]
+                                },
+                            }
+                        },
+                        "then": {
+                            "properties": {
+                                "configFile": {
+                                    "type": "string",
+                                    "description": "The configuration file that tslint should use instead of the default tslint.json. A relative file path is resolved relative to the project root."
+                                },
+                                "jsEnable": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Enable/disable tslint for `.js` files, default is `false`."
+                                },
+                                "ignoreDefinitionFiles": {
+                                    "type": "boolean",
+                                    "default": true,
+                                    "description": "Control if TypeScript definition files should be ignored. Default is `true`."
+                                },
+                                "alwaysShowRuleFailuresAsWarnings": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Always show rule failures as warnings, ignoring the severity configuration in the tslint.json configuration. Default is `false`."
+                                },
+                                "suppressWhileTypeErrorsPresent": {
+                                    "type": "boolean",
+                                    "default": false,
+                                    "description": "Suppress tslint errors from being reported while other errors are present. Default is `false`."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

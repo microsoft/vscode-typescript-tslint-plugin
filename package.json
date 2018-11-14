@@ -43,6 +43,14 @@
             {
                 "fileMatch": "tslint.json",
                 "url": "http://json.schemastore.org/tslint"
+            },
+            {
+                "fileMatch": "jsconfig*.json",
+                "url": "./schemas/tsconfig.schema.json"
+            },
+            {
+                "fileMatch": "tsconfig*.json",
+                "url": "./schemas/tsconfig.schema.json"
             }
         ],
         "problemPatterns": [
