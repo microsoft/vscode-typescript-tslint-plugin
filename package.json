@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "private": true,
     "preview": true,
     "displayName": "TypeScript TSLint Plugin",
@@ -101,6 +101,6 @@
         ]
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.0.5"
+        "typescript-tslint-plugin": "0.0.6"
     }
 }
