@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.0.6 - November 15, 2018
+- Fix potential state corruption error when using TS 3.2.
+
 ## 0.0.5 - November 14, 2018
 - Fix trailing comma in schema. 
 - Only make plugin schema apply if name is specified and set to `typesacript-tslint-plugin`.
