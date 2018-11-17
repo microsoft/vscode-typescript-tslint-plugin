@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "0.0.6",
+    "version": "0.1.0",
     "private": true,
     "preview": true,
     "displayName": "TypeScript TSLint Plugin",
@@ -18,9 +18,6 @@
     "bugs": {
         "url": "https://github.com/Microsoft/vscode-typescript-tslint-plugin/issues"
     },
-    "engines": {
-        "vscode": "^1.15.0"
-    },
     "categories": [
         "Programming Languages"
     ],
@@ -30,6 +27,16 @@
         "lint",
         "ts"
     ],
+    "engines": {
+        "vscode": "^1.29.0"
+    },
+    "activationEvents": [
+        "onLanguage:javascript",
+        "onLanguage:javascriptreact",
+        "onLanguage:typescript",
+        "onLanguage:typescriptreact"
+    ],
+    "main": "./out/index.js",
     "contributes": {
         "languages": [
             {
@@ -98,9 +105,45 @@
             {
                 "name": "typescript-tslint-plugin"
             }
-        ]
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "TSLint",
+            "properties": {
+                "tslint.jsEnable": {
+                    "type": "boolean",
+                    "description": "Control whether tslint is enabled for JavaScript files or not."
+                },
+                "tslint.configFile": {
+                    "type": "string",
+                    "description": "The path to the rules configuration file"
+                },
+                "tslint.ignoreDefinitionFiles": {
+                    "type": "boolean",
+                    "description": "Control if TypeScript definition files should be ignored."
+                },
+                "tslint.alwaysShowRuleFailuresAsWarnings": {
+                    "type": "boolean",
+                    "description": "Always show rule failures as warnings, independent of the tslint configuration."
+                },
+                "tslint.suppressWhileTypeErrorsPresent": {
+                    "type": "boolean",
+                    "description": "Always show rule failures as warnings, independent of the tslint configuration."
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -p ./",
+        "watch": "tsc -w -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.0.7"
+        "typescript-tslint-plugin": "0.1.0"
+    },
+    "devDependencies": {
+        "typescript": "^3.1.6",
+        "vscode": "^1.1.21"
     }
 }

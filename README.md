@@ -11,6 +11,21 @@ This extension works out of the box with VS Code's built-in version of TypeScrip
 
 If you are [using a workspace version of typescript](https://code.visualstudio.com/Docs/languages/typescript#_using-newer-typescript-versions), you must currently configure the TS Server plugin manually by following [these instructions][usage]
 
+## Configuration
+
+You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described  [here](https://github.com/Microsoft/typescript-tslint-plugin#configuration-options), or configure it with VS Code settings. This requires VS Code 1.30+ and TS 3.2+. Note the VS Code based configuration override the `tsconfig` or `jsconfig` configuration.
+
+ * `tslint.configFile` - The configuration file that tslint should use instead of the default tslint.json. A relative file path is resolved relative to the project root.
+
+ * `tslint.jsEnable` - Enable/disable tslint for `.js` files. Default is `false`.
+
+ * `tslint.ignoreDefinitionFiles` - Control if TypeScript definition files should be ignored. Default is `true`.
+
+ * `tslint.alwaysShowRuleFailuresAsWarnings` - Always show rule failures as warnings, ignoring the severity configuration in the tslint.json configuration.
+
+ * `tslint.suppressWhileTypeErrorsPresent` - Suppress tslint errors from being reported while other errors are present.
+
+
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
 - Configuration options for TSLint are specified [inside the `tsconfig.json`][usage].
