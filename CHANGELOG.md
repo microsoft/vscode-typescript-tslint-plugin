@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.1.0 - November 16, 2018
+- Allow configuring using VS Code settings.
+- Correctly observe changes to the `tsconfig`/`jsconfig`.
+- Fix error that could cause duplicate tslint errors to be reported.
+
 ## 0.0.6 - November 15, 2018
 - Fix potential state corruption error when using TS 3.2.
 
