@@ -57,7 +57,7 @@ function withConfigValue<T>(config: vscode.WorkspaceConfiguration, key: string, 
     }
 
     // Make sure the user has actually set the value.
-    // VS Code will return the default values instead of `undefined` even if you don't set anything.
+    // VS Code will return the default values instead of `undefined`, even if user has not don't set anything.
     if (typeof configSetting.globalValue === 'undefined' && typeof configSetting.workspaceFolderValue === 'undefined' && typeof configSetting.workspaceValue === 'undefined') {
         return;
     }
