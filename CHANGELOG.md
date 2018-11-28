@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.1.1 - November 27, 2018
+- Fix bug that could cause TS Lint to use a different version of TypeScript than the version being used by the plugin. This would result in unexpected behavior.
+- Use JS/TS extension instead of API to configure plugins.
+
 ## 0.1.0 - November 16, 2018
 - Allow configuring using VS Code settings.
 - Correctly observe changes to the `tsconfig`/`jsconfig`.
