@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 
 const typeScriptExtensionId = 'vscode.typescript-language-features';
 const pluginId = 'typescript-tslint-plugin';
-const configurePluginCommand = '_typescript.configurePlugin';
 const configurationSection = 'tslint';
 
 interface SynchronizedConfiguration {
@@ -20,21 +19,25 @@ export async function activate(context: vscode.ExtensionContext) {
     }
 
     await extension.activate();
-    if (!extension.exports) {
+    if (!extension.exports || !extension.exports.getAPI) {
+        return;
+    }
+    const api = extension.exports.getAPI(0);
+    if (!api) {
         return;
     }
 
     vscode.workspace.onDidChangeConfiguration(e => {
         if (e.affectsConfiguration(configurationSection)) {
-            synchronizeConfiguration();
+            synchronizeConfiguration(api);
         }
     }, undefined, context.subscriptions);
 
-    synchronizeConfiguration();
+    synchronizeConfiguration(api);
 }
 
-function synchronizeConfiguration() {
-    vscode.commands.executeCommand(configurePluginCommand, pluginId, getConfiguration());
+function synchronizeConfiguration(api: any) {
+    api.configurePlugin(pluginId, getConfiguration());
 }
 
 function getConfiguration(): SynchronizedConfiguration {
