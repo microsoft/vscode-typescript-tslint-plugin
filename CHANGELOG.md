@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.2.0 - December 12, 2018
+- Pick up plugin version 0.2.0.
+- Default `alwaysShowRuleFailuresAsWarnings` to true. Set `"alwaysShowRuleFailuresAsWarnings": false` to restore the old behavior.
+- Removing logic for older TS lint versions. Only TSlint5 was ever officially supported but there was still some logic for handling older tslint4.
+- Don't show error in editor if `tslint` can't be found. We still log an error in the TS Server but do not generate an editor warning.
+
 ## 0.1.1 - November 27, 2018
 - Fix bug that could cause TS Lint to use a different version of TypeScript than the version being used by the plugin. This would result in unexpected behavior.
 - Use JS/TS extension instead of API to configure plugins.
