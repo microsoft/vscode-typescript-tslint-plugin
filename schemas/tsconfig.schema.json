@@ -39,8 +39,8 @@
                                 },
                                 "alwaysShowRuleFailuresAsWarnings": {
                                     "type": "boolean",
-                                    "default": false,
-                                    "description": "Always show rule failures as warnings, ignoring the severity configuration in the tslint.json configuration. Default is `false`."
+                                    "default": true,
+                                    "description": "Always show rule failures as warnings, ignoring the severity configuration in the tslint.json configuration. Default is `true`."
                                 },
                                 "suppressWhileTypeErrorsPresent": {
                                     "type": "boolean",
