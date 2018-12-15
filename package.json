@@ -103,7 +103,8 @@
         ],
         "typescriptServerPlugins": [
             {
-                "name": "typescript-tslint-plugin"
+                "name": "typescript-tslint-plugin",
+                "enableForWorkspaceTypeScriptVersions": true
             }
         ],
         "configuration": {
