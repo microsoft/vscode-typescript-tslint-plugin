@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.1 - December 14, 2018
+- Fix `ignoreDefinitionFiles` defaulting to false.
+- Set `enableForWorkspaceTypeScriptVersions` to allow global plugin to be loaded when using workspace version of TypeScript. This requires VS Code 1.31+.
+
 ## 0.2.0 - December 12, 2018
 - Pick up plugin version 0.2.0.
 - Default `alwaysShowRuleFailuresAsWarnings` to true. Set `"alwaysShowRuleFailuresAsWarnings": false` to restore the old behavior.

@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "private": true,
     "preview": true,
     "displayName": "TypeScript TSLint Plugin",
@@ -141,7 +141,7 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.2.0"
+        "typescript-tslint-plugin": "0.2.1"
     },
     "devDependencies": {
         "typescript": "^3.1.6",
