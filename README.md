@@ -21,6 +21,8 @@ You can either configure the TSLint extension using a `tsconfig` or `jsconfig` a
 
  * `tslint.ignoreDefinitionFiles` - Control if TypeScript definition files should be ignored. Default is `true`.
 
+ * `tslint.exclude` - A glob or an array of globs. Any file matching these globs will not be linted.
+
  * `tslint.alwaysShowRuleFailuresAsWarnings` - Always show rule failures as warnings, ignoring the severity configuration in the tslint.json configuration.
 
  * `tslint.suppressWhileTypeErrorsPresent` - Suppress tslint errors from being reported while other errors are present.

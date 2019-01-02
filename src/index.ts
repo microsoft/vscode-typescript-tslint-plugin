@@ -10,6 +10,7 @@ interface SynchronizedConfiguration {
     configFile?: string;
     suppressWhileTypeErrorsPresent?: boolean;
     jsEnable?: boolean;
+    exclude?: string | string[];
 }
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -49,6 +50,7 @@ function getConfiguration(): SynchronizedConfiguration {
     withConfigValue<boolean>(config, 'suppressWhileTypeErrorsPresent', value => { outConfig.suppressWhileTypeErrorsPresent = value; });
     withConfigValue<boolean>(config, 'jsEnable', value => { outConfig.jsEnable = value; });
     withConfigValue<string>(config, 'configFile', value => { outConfig.configFile = value; });
+    withConfigValue<string | string[]>(config, 'exclude', value => { outConfig.exclude = value; });
 
     return outConfig;
 }

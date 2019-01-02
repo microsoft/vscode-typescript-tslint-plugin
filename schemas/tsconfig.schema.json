@@ -37,6 +37,20 @@
                                     "default": true,
                                     "description": "Control if TypeScript definition files should be ignored. Default is `true`."
                                 },
+                                "exclude": {
+                                    "description": "A glob or an array of globs. Any file matching these globs will not be linted.",
+                                    "anyOf": [
+                                        {
+                                            "type": "string"
+                                        },
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    ]
+                                },
                                 "alwaysShowRuleFailuresAsWarnings": {
                                     "type": "boolean",
                                     "default": true,

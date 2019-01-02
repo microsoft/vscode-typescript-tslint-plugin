@@ -123,6 +123,20 @@
                     "type": "boolean",
                     "description": "Control if TypeScript definition files should be ignored."
                 },
+                "tslint.exclude": {
+                    "description": "A glob or an array of globs. Any file matching these globs will not be linted.",
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    ]
+                },
                 "tslint.alwaysShowRuleFailuresAsWarnings": {
                     "type": "boolean",
                     "description": "Always show rule failures as warnings, independent of the tslint configuration."
