@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.3.0 - January 2, 2019
+- Allow configuring `excludes`. Thanks @vemoo!
+
 ## 0.2.1 - December 14, 2018
 - Fix `ignoreDefinitionFiles` defaulting to false.
 - Set `enableForWorkspaceTypeScriptVersions` to allow global plugin to be loaded when using workspace version of TypeScript. This requires VS Code 1.31+.
