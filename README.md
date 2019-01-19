@@ -27,6 +27,8 @@ You can either configure the TSLint extension using a `tsconfig` or `jsconfig` a
 
  * `tslint.suppressWhileTypeErrorsPresent` - Suppress tslint errors from being reported while other errors are present.
 
+ * `tslint.autoFixOnSave` - turns auto fix on save on or off. **Note:** Auto-fixing is only done when manually saving a file. It is not performed when the file is automatically saved based on the `files.autoSave` setting. Executing a manual save on an already-saved document will trigger auto-fixing.
+
 
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 

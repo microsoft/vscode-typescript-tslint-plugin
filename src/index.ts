@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { isTypeScriptDocument, isEnabledForJavaScriptDocument, fixAll } from './utils';
 
 const typeScriptExtensionId = 'vscode.typescript-language-features';
 const pluginId = 'typescript-tslint-plugin';
@@ -28,11 +29,14 @@ export async function activate(context: vscode.ExtensionContext) {
         return;
     }
 
-    vscode.workspace.onDidChangeConfiguration(e => {
-        if (e.affectsConfiguration(configurationSection)) {
-            synchronizeConfiguration(api);
-        }
-    }, undefined, context.subscriptions);
+    context.subscriptions.push(
+        vscode.workspace.onDidChangeConfiguration(e => {
+            if (e.affectsConfiguration(configurationSection)) {
+                synchronizeConfiguration(api);
+            }
+        }, undefined, context.subscriptions),
+        vscode.workspace.onWillSaveTextDocument(willSaveTextDocument)
+    );
 
     synchronizeConfiguration(api);
 }
@@ -70,5 +74,23 @@ function withConfigValue<T>(config: vscode.WorkspaceConfiguration, key: string, 
     const value = config.get<T | undefined>(key, undefined);
     if (typeof value !== 'undefined') {
         withValue(value);
+    }
+}
+
+async function willSaveTextDocument(e: vscode.TextDocumentWillSaveEvent) {
+    const config = vscode.workspace.getConfiguration('tslint', e.document.uri);
+    const autoFix = config.get('autoFixOnSave', false);
+    if (autoFix) {
+        const document = e.document;
+
+        // only auto fix when the document was manually saved by the user
+        if (!(isTypeScriptDocument(document) || isEnabledForJavaScriptDocument(document))
+            || e.reason !== vscode.TextDocumentSaveReason.Manual) {
+            return;
+        }
+
+        const promise = fixAll(document);
+        e.waitUntil(promise);
+        await promise;
     }
 }
