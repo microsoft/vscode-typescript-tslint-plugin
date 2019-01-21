@@ -5,7 +5,7 @@ Adds [tslint](https://github.com/palantir/tslint) to VS Code using the [TypeScri
 Please refer to the [tslint documentation](https://github.com/palantir/tslint) for how to configure the linting rules.
 
 ## Usage
-> ❗ **Important**: If you also have the [vscode-tslint][vscode-tslint] extension in VS Code installed, please disable it to avoid that files are linted twice.*
+> ❗ **Important**: If you also have the [vscode-tslint][vscode-tslint] extension in VS Code installed, please disable it to avoid linting files twice.*
 
 This extension works using VS Code's built-in version of TypeScript and a local or global install of tslint. You do not need to configure the plugin in your `tsconfig.json` if you are using VS Code's version of TypeScript.
 
