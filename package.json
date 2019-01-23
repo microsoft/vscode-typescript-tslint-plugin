@@ -144,6 +144,12 @@
                 "tslint.suppressWhileTypeErrorsPresent": {
                     "type": "boolean",
                     "description": "Always show rule failures as warnings, independent of the tslint configuration."
+                },
+                "tslint.autoFixOnSave": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Turns auto fix on save on or off.",
+                    "scope": "resource"
                 }
             }
         }
