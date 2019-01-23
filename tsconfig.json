@@ -4,6 +4,7 @@
         "target": "es2016",
         "jsx": "preserve",
         "strict": true,
+        "noUnusedLocals": true,
         "outDir": "./out",
         "sourceMap": true
     },
