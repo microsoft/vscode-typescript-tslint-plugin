@@ -139,7 +139,8 @@
                 },
                 "tslint.alwaysShowRuleFailuresAsWarnings": {
                     "type": "boolean",
-                    "description": "Always show rule failures as warnings, independent of the tslint configuration."
+                    "description": "Always show rule failures as warnings, independent of the tslint configuration.",
+                    "default": true
                 },
                 "tslint.suppressWhileTypeErrorsPresent": {
                     "type": "boolean",
