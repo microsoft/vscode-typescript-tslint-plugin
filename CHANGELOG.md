@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.4.1 - January 31, 2019
+- Fix the `fix-all` action showing up even on non-autofixable errors.
+
 ## 0.4.0 - January 23, 2019
 - Pick up TS lint plugin 0.4.
 - Auto fixing all errors and auto fix on save. Thanks @kondi!
