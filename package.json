@@ -1,10 +1,9 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "0.4.1",
+    "version": "1.0.0",
     "private": true,
-    "preview": true,
-    "displayName": "TypeScript TSLint Plugin",
-    "description": "Provides TSLint support using the typescript-tslint-plugin",
+    "displayName": "TSLint",
+    "description": "TSLint support for Visual Studio Code",
     "publisher": "ms-vscode",
     "icon": "docs/icon.png",
     "license": "MIT",
@@ -25,10 +24,11 @@
         "tslint",
         "typescript",
         "lint",
-        "ts"
+        "ts",
+        "linters"
     ],
     "engines": {
-        "vscode": "^1.29.0"
+        "vscode": "^1.30.0"
     },
     "activationEvents": [
         "onLanguage:javascript",

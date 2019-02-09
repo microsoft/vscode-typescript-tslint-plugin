@@ -55,13 +55,9 @@ You can also setup a keybinding for tslint auto fix:
 
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
-- Configuration options for TSLint are specified [inside the `tsconfig.json`][configuration].
-
 - The implementation as a TypeScript server plugin enables to shares the program representation with TypeScript. This is more efficient than the current `vscode-tslint` implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 
 
 - `vscode-tslint` can only lint one file a time. It therefore cannot support [semantic tslint rules](https://palantir.github.io/tslint/usage/type-checking/) that require the type checker. The language service plugin doesn't have this limitation. To overcome this limitation is a key motivation for reimplementing the extension.
-
-- This extension requires that the `tslint` and `typescript` modules are installed either locally or globally. The `vscode-tslint` extension will use the tslint module that is installed closest to the linted file. To install tslint and typescript globally you can run `npm install -g tslint typescript`.
 
 [vscode-tslint]: https://marketplace.visualstudio.com/items?itemName=eg2.tslint
 [configuration]: https://github.com/Microsoft/typescript-tslint-plugin#configuration-options

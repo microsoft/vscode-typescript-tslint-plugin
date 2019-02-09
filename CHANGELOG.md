@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.0 - February 8, 2019
+- 1.0 release.
+
 ## 0.4.1 - January 31, 2019
 - Fix the `fix-all` action showing up even on non-autofixable errors.
 
