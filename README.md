@@ -5,6 +5,7 @@ Adds [tslint](https://github.com/palantir/tslint) to VS Code using the [TypeScri
 Please refer to the [tslint documentation](https://github.com/palantir/tslint) for how to configure the linting rules.
 
 ## Usage
+
 > ❗ **Important**: If you also have the [vscode-tslint][vscode-tslint] extension in VS Code installed, please disable it to avoid linting files twice.*
 
 This extension works using VS Code's built-in version of TypeScript and a local or global install of tslint. You do not need to configure the plugin in your `tsconfig.json` if you are using VS Code's version of TypeScript.
@@ -13,7 +14,7 @@ If you are using VS Code 1.30 or older and are [using a workspace version of typ
 
 ## Configuration
 
-You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described  [here][configuration], or configure it with VS Code settings. This requires VS Code 1.30+ and TS 3.2+. Note the VS Code based configuration override the `tsconfig` or `jsconfig` configuration.
+You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described [here][configuration], or configure it with VS Code settings. This requires VS Code 1.30+ and TS 3.2+. Note the VS Code based configuration overrides the `tsconfig` or `jsconfig` configuration.
 
  * `tslint.configFile` - The configuration file that tslint should use instead of the default tslint.json. A relative file path is resolved relative to the project root.
 
@@ -28,6 +29,7 @@ You can either configure the TSLint extension using a `tsconfig` or `jsconfig` a
  * `tslint.suppressWhileTypeErrorsPresent` - Suppress tslint errors from being reported while other errors are present.
 
 ### Auto fix and auto fix on save
+
 Some simple errors can be automatically fixed by tslint using the `source.fixAll.tslint` source code action in VS Code. To run this, either run the `Source Action...` command in the command palette or right click in the TS file and select `Source Action...` from the context menu:
 
 ![Source Action context menu](docs/sourceAction.png)
@@ -55,7 +57,7 @@ You can also setup a keybinding for tslint auto fix:
 
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
-- The implementation as a TypeScript server plugin enables to shares the program representation with TypeScript. This is more efficient than the current `vscode-tslint` implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 
+- The implementation as a TypeScript server plugin enables sharing the program representation with TypeScript. This is more efficient than the current `vscode-tslint` implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 
 
 - `vscode-tslint` can only lint one file a time. It therefore cannot support [semantic tslint rules](https://palantir.github.io/tslint/usage/type-checking/) that require the type checker. The language service plugin doesn't have this limitation. To overcome this limitation is a key motivation for reimplementing the extension.
 
