@@ -28,7 +28,7 @@
         "linters"
     ],
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.32.0"
     },
     "activationEvents": [
         "onLanguage:javascript",

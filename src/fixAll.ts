@@ -22,7 +22,7 @@ async function getTsLintFixAllCodeAction(document: vscode.TextDocument): Promise
 }
 
 
-const fixAllCodeActionKind = vscode.CodeActionKind.Source.append('fixAll').append('tslint');
+const fixAllCodeActionKind = vscode.CodeActionKind.SourceFixAll.append('tslint');
 
 export class FixAllProvider implements vscode.CodeActionProvider {
     public static metadata: vscode.CodeActionProviderMetadata = {
