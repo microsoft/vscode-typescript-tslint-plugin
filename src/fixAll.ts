@@ -15,10 +15,7 @@ async function getTsLintFixAllCodeAction(document: vscode.TextDocument): Promise
     for (const diagnostic of diagnostics) {
         const codeActions = await executeCodeActionProvider(document.uri, diagnostic.range);
         if (codeActions) {
-            const fixAll = codeActions.filter(action => action.title === 'Fix all auto-fixable tslint failures');
-            if (fixAll.length > 0) {
-                return fixAll[0];
-            }
+            return codeActions.find(action => action.title === 'Fix all auto-fixable tslint failures');
         }
     }
     return undefined;
