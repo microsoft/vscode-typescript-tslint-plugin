@@ -6,7 +6,7 @@ Please refer to the [tslint documentation](https://github.com/palantir/tslint) f
 
 ## Usage
 
-> ❗ **Important**: If you also have the [vscode-tslint][vscode-tslint] extension in VS Code installed, please disable it to avoid linting files twice.*
+> ❗ **Important**: This now only supports projects using TypeScript **3.2.0 or newer**. You may enable the deprecated [vscode-TSLint][vscode-tslint] extension for projects using older versions of TypeScript, but please [disable one of the extensions][disable-extension] in your workspaces to avoid linting files twice.
 
 This extension works using VS Code's built-in version of TypeScript and a local or global install of tslint. You do not need to configure the plugin in your `tsconfig.json` if you are using VS Code's version of TypeScript.
 
@@ -14,7 +14,7 @@ If you are using VS Code 1.30 or older and are [using a workspace version of typ
 
 ## Configuration
 
-You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described [here][configuration], or configure it with VS Code settings. This requires VS Code 1.30+ and TS 3.2+. Note the VS Code based configuration overrides the `tsconfig` or `jsconfig` configuration.
+You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described [here][configuration], or configure it with VS Code settings. Note the VS Code based configuration overrides the `tsconfig` or `jsconfig` configuration.
 
  * `tslint.configFile` - The configuration file that tslint should use instead of the default tslint.json. A relative file path is resolved relative to the project root.
 
@@ -61,5 +61,8 @@ You can also setup a keybinding for tslint auto fix:
 
 - `vscode-tslint` can only lint one file a time. It therefore cannot support [semantic tslint rules](https://palantir.github.io/tslint/usage/type-checking/) that require the type checker. The language service plugin doesn't have this limitation. To overcome this limitation is a key motivation for reimplementing the extension.
 
+- This implementation supports newer versions of TypeScript.
+
 [vscode-tslint]: https://marketplace.visualstudio.com/items?itemName=eg2.tslint
 [configuration]: https://github.com/Microsoft/typescript-tslint-plugin#configuration-options
+[disable-extension]: https://code.visualstudio.com/docs/editor/extension-gallery#_disable-an-extension
