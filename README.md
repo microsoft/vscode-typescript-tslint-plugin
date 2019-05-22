@@ -55,6 +55,19 @@ You can also setup a keybinding for tslint auto fix:
 }
 ```
 
+### Allowing comments in `tslint.json` files
+TSlint allows `// comments` in `tsconfig.json` files but it does not allow trailing commas. In order to help you catch errors with trailing commas, this extension opts to treat `tslint.json` files as standard json by default. However this also means that you will see errors report for comments.
+
+If you use comments in your `tsconfig.json`, you can configure VS Code to treat the file as json+comments by setting:
+
+```json
+"files.associations": {
+    "tslint.json": "jsonc"
+}
+```
+
+However keep in mind that VS Code's json+comments mode will not report errors for trailing commas which will cause TSLint to error when loading the `tsconfig.json`.
+
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
 - The implementation as a TypeScript server plugin enables sharing the program representation with TypeScript. This is more efficient than the current `vscode-tslint` implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 

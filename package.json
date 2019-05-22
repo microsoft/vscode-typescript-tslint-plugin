@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "private": true,
     "displayName": "TSLint",
     "description": "TSLint support for Visual Studio Code",
@@ -38,14 +38,6 @@
     ],
     "main": "./out/index.js",
     "contributes": {
-        "languages": [
-            {
-                "id": "jsonc",
-                "filenames": [
-                    "tslint.json"
-                ]
-            }
-        ],
         "jsonValidation": [
             {
                 "fileMatch": "tslint.json",
