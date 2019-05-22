@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.1.0 - May 21, 2010
+## 1.1.0 - May 21, 2019
 - Help users better understand why tslint is not enabled by generating warnings if there is a `tslint.json` and the tslint library cannot be found or generates an error.
 - Treat `tslint.json` as a standard `json` file by default instead of json+comments.
 
