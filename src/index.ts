@@ -12,6 +12,7 @@ interface SynchronizedConfiguration {
     suppressWhileTypeErrorsPresent?: boolean;
     jsEnable?: boolean;
     exclude?: string | string[];
+    packageManager?: 'npm' | 'pnpm' | 'yarn';
 }
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -61,6 +62,7 @@ function getConfiguration(): SynchronizedConfiguration {
     withConfigValue(config, outConfig, 'jsEnable');
     withConfigValue(config, outConfig, 'configFile');
     withConfigValue(config, outConfig, 'exclude');
+    withConfigValue(config, outConfig, 'packageManager');
 
     return outConfig;
 }
