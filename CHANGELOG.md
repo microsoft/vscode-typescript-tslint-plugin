@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.2.0 - June 17, 2019
+- Pick up tslint-plugin 0.5.0
+- Update the problem matcher to support errors from TSlint 5.12 or newer. Thanks @Springrbua!
+- Fix a potential cause of fix-all actions not working. Thanks @lawrence-yu!
+- Hook up the `packageManager` property from the tslint plugin Thanks @ExE-Boss!
+
 ## 1.1.0 - May 21, 2019
 - Help users better understand why tslint is not enabled by generating warnings if there is a `tslint.json` and the tslint library cannot be found or generates an error.
 - Treat `tslint.json` as a standard `json` file by default instead of json+comments.
