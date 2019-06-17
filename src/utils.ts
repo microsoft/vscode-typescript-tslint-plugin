@@ -9,7 +9,7 @@ export function isJavaScriptDocument(languageId: string) {
 }
 
 export function isEnabledForJavaScriptDocument(document: TextDocument) {
-    let isJsEnable = workspace.getConfiguration('tslint', document.uri).get('jsEnable', true);
+    const isJsEnable = workspace.getConfiguration('tslint', document.uri).get('jsEnable', true);
     if (isJsEnable && isJavaScriptDocument(document.languageId)) {
         return true;
     }

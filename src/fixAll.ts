@@ -1,21 +1,20 @@
 
 import * as vscode from 'vscode';
-import { isTypeScriptDocument, isEnabledForJavaScriptDocument } from './utils';
+import { isEnabledForJavaScriptDocument, isTypeScriptDocument } from './utils';
 
 function executeCodeActionProvider(uri: vscode.Uri, range: vscode.Range) {
     return vscode.commands.executeCommand<vscode.CodeAction[]>('vscode.executeCodeActionProvider', uri, range);
 }
 
-
 async function getTsLintFixAllCodeAction(document: vscode.TextDocument): Promise<vscode.CodeAction | undefined> {
     const diagnostics = vscode.languages
         .getDiagnostics(document.uri)
-        .filter(diagnostic => diagnostic.source === 'tslint');
+        .filter((diagnostic) => diagnostic.source === 'tslint');
 
     for (const diagnostic of diagnostics) {
         const codeActions = await executeCodeActionProvider(document.uri, diagnostic.range);
         if (codeActions) {
-            const fixAll = codeActions.filter(action => action.title === 'Fix all auto-fixable tslint failures');
+            const fixAll = codeActions.filter((action) => action.title === 'Fix all auto-fixable tslint failures');
             if (fixAll.length > 0) {
                 return fixAll[0];
             }
@@ -24,7 +23,6 @@ async function getTsLintFixAllCodeAction(document: vscode.TextDocument): Promise
     return undefined;
 }
 
-
 const fixAllCodeActionKind = vscode.CodeActionKind.SourceFixAll.append('tslint');
 
 export class FixAllProvider implements vscode.CodeActionProvider {
@@ -32,11 +30,11 @@ export class FixAllProvider implements vscode.CodeActionProvider {
         providedCodeActionKinds: [fixAllCodeActionKind],
     };
 
-    async provideCodeActions(
+    public async provideCodeActions(
         document: vscode.TextDocument,
         _range: vscode.Range | vscode.Selection,
         context: vscode.CodeActionContext,
-        _token: vscode.CancellationToken
+        _token: vscode.CancellationToken,
     ): Promise<vscode.CodeAction[]> {
         if (!context.only) {
             return [];

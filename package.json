@@ -154,13 +154,15 @@
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
-        "watch": "tsc -w -p ./"
+        "watch": "tsc -w -p ./",
+        "lint": "tslint -c tslint.json -p ."
     },
     "dependencies": {
         "typescript-tslint-plugin": "0.5.0"
     },
     "devDependencies": {
         "@types/vscode": "^1.32.0",
+        "tslint": "^5.17.0",
         "typescript": "^3.4.5"
     }
 }

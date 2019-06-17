@@ -30,7 +30,7 @@ export async function activate(context: vscode.ExtensionContext) {
         return;
     }
 
-    vscode.workspace.onDidChangeConfiguration(e => {
+    vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration(configurationSection)) {
             synchronizeConfiguration(api);
         }
@@ -79,12 +79,15 @@ function withConfigValue<C, K extends Extract<keyof C, string>>(
 
     // Make sure the user has actually set the value.
     // VS Code will return the default values instead of `undefined`, even if user has not don't set anything.
-    if (typeof configSetting.globalValue === 'undefined' && typeof configSetting.workspaceFolderValue === 'undefined' && typeof configSetting.workspaceValue === 'undefined') {
+    if (typeof configSetting.globalValue === 'undefined'
+        && typeof configSetting.workspaceFolderValue === 'undefined'
+        && typeof configSetting.workspaceValue === 'undefined'
+    ) {
         return;
     }
 
     const value = config.get<vscode.WorkspaceConfiguration[K] | undefined>(key, undefined);
     if (typeof value !== 'undefined') {
-        outConfig[key] = value;
+        (outConfig as any)[key] = value;
     }
 }
