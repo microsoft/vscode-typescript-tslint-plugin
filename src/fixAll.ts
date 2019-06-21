@@ -23,11 +23,11 @@ async function getTsLintFixAllCodeAction(document: vscode.TextDocument): Promise
     return undefined;
 }
 
-const fixAllCodeActionKind = vscode.CodeActionKind.SourceFixAll.append('tslint');
-
 export class FixAllProvider implements vscode.CodeActionProvider {
+    public static readonly fixAllCodeActionKind = vscode.CodeActionKind.SourceFixAll.append('tslint');
+
     public static metadata: vscode.CodeActionProviderMetadata = {
-        providedCodeActionKinds: [fixAllCodeActionKind],
+        providedCodeActionKinds: [FixAllProvider.fixAllCodeActionKind],
     };
 
     public async provideCodeActions(
@@ -40,7 +40,9 @@ export class FixAllProvider implements vscode.CodeActionProvider {
             return [];
         }
 
-        if (!context.only.contains(fixAllCodeActionKind) && !fixAllCodeActionKind.contains(context.only)) {
+        if (!context.only.contains(FixAllProvider.fixAllCodeActionKind)
+            && !FixAllProvider.fixAllCodeActionKind.contains(context.only)
+        ) {
             return [];
         }
 
@@ -56,7 +58,7 @@ export class FixAllProvider implements vscode.CodeActionProvider {
         return [{
             ...fixAllAction,
             title: 'Fix All TSLint',
-            kind: fixAllCodeActionKind,
+            kind: FixAllProvider.fixAllCodeActionKind,
         }];
     }
 }
