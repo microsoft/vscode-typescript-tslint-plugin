@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { FixAllProvider } from './fixAll';
+import { TsLintConfigurationStatusBarWarning } from './warningStatusBar';
 
 const typeScriptExtensionId = 'vscode.typescript-language-features';
 const pluginId = 'typescript-tslint-plugin';
@@ -44,6 +45,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
     context.subscriptions.push(
         vscode.languages.registerCodeActionsProvider(selector, new FixAllProvider(), FixAllProvider.metadata));
+
+    context.subscriptions.push(new TsLintConfigurationStatusBarWarning());
 
     synchronizeConfiguration(api);
 }

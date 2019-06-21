@@ -1,6 +1,6 @@
 
 import * as vscode from 'vscode';
-import { isEnabledForJavaScriptDocument, isTypeScriptDocument } from './utils';
+import { shouldBeLinted } from './utils';
 
 function executeCodeActionProvider(uri: vscode.Uri, range: vscode.Range) {
     return vscode.commands.executeCommand<vscode.CodeAction[]>('vscode.executeCodeActionProvider', uri, range);
@@ -46,7 +46,7 @@ export class FixAllProvider implements vscode.CodeActionProvider {
             return [];
         }
 
-        if (!isTypeScriptDocument(document) && !isEnabledForJavaScriptDocument(document)) {
+        if (!shouldBeLinted(document)) {
             return [];
         }
 
