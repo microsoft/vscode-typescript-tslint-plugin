@@ -1,7 +1,8 @@
 # Change Log
 
 ## 1.2.1 - June 21, 2019
-- Don't lint mjs files by default
+- Don't lint mjs files by default.
+- Show an alert in the status bar if we detect that tslint is misconfigured. This alert only shows when you open a TS (or JS) file that we think should be linted but tslint is misconfigured in some way. 
 
 ## 1.2.0 - June 17, 2019
 - Pick up tslint-plugin 0.5.0
