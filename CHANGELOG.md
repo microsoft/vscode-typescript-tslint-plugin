@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.2.1 - June 21, 2019
+- Don't lint mjs files by default
+
 ## 1.2.0 - June 17, 2019
 - Pick up tslint-plugin 0.5.0
 - Update the problem matcher to support errors from TSlint 5.12 or newer. Thanks @Springrbua!
