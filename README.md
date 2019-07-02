@@ -68,6 +68,38 @@ If you use comments in your `tsconfig.json`, you can configure VS Code to treat 
 
 However keep in mind that VS Code's json+comments mode will not report errors for trailing commas which will cause TSLint to error when loading the `tsconfig.json`.
 
+### Debugging why tslint is not working
+
+If you are not seeing TSLint working in your project—such as TSLint errors not showing up—you can follow these steps to investigate what may be going wrong.
+
+If there is a `tslint.json` in the workspace but we can't find the `tslint` executable in your workspace, you should see a TSLint warning icon in the status bar. Hover over this icon to see why TSLint is not enabled and how to fix it.
+
+![TSLint warning icon in the status bar](docs/config-error-status-bar.png)
+
+In these cases, there should also be a warning on the first line of every TypeScript files with the same information:
+
+![TSLint config error on first line of editor](docs/config-error-problem.png)
+
+You can also try checking the TypeScript server logs to see why TSLint is not working:
+
+1. In your VS Code user or workspace settings, set `"typescript.tsserver.log": "terse"`.
+1. Open a TS file that you believe should have TSLint enabled
+1. In the VS Code command palette, run `TypeScript: Open TS Server Log`
+1. This should open a `tsserver.log` file in the editor
+
+In the log file, look for lines that start with `[typescript-tslint-plugin]`. These indicates that the extension is active and may also contain additional information about why TSLint is not working as you expect.
+
+If you do not see log entries with `[typescript-tslint-plugin]`, you can also check to see if the plugin itself is being loaded properly. In the logs, look for the section starting with:
+
+```
+Loading global plugin typescript-tslint-plugin
+Info 21   [15:28:11.970] Enabling plugin typescript-tslint-plugin from candidate paths: ...
+```
+
+And see if there are any errors about not being able to load the plugin.
+
+If you can't figure out why TSLint is not loading properly after looking through the logs, please open an issue.
+
 ## Differences with the [vscode-TSLint][vscode-tslint] extension
 
 - The implementation as a TypeScript server plugin enables sharing the program representation with TypeScript. This is more efficient than the current `vscode-tslint` implementation. The current TSLint implementation needs to reanalyze a document that has already been analyzed by the TypeScript language server. 
