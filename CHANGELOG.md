@@ -1,5 +1,10 @@
 # Change Log
 
+## 1.2.2 - July 10, 2019
+- Pick up plugin version 0.5.4
+- Fixes disabled quick fix not having correct indent.
+- Make sure we pass along packageManager to tslint runner.
+
 ## 1.2.1 - June 21, 2019
 - Don't lint mjs files by default.
 - Show an alert in the status bar if we detect that tslint is misconfigured. This alert only shows when you open a TS (or JS) file that we think should be linted but tslint is misconfigured in some way. 
