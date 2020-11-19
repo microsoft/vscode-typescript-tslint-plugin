@@ -5,6 +5,7 @@
         "jsx": "preserve",
         "strict": true,
         "noUnusedLocals": true,
+        "forceConsistentCasingInFileNames": true,
         "outDir": "./out",
         "sourceMap": true
     },

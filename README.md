@@ -16,6 +16,18 @@ This extension works using VS Code's built-in version of TypeScript and a local 
 
 If you are using VS Code 1.30 or older and are [using a workspace version of typescript](https://code.visualstudio.com/docs/typescript/typescript-compiling#_using-the-workspace-version-of-typescript), you must currently configure the TS Server plugin manually by following [these instructions][configuration]
 
+## Workspace Library Execution
+
+By default this extension will not load TSLint or custom rules from your workspace if you are using a global version of TypeScript. This is done for security reasons. The extension always allows using globally installed versions of TSLint (`npm install -g tslint`).
+
+To use enable using a local TSLint install and custom rules from the workspace, you must either:
+
+- Use a workspace version of TypeScript that is installed alongside TSLint.
+
+- Enable workspace library execution by running the `TSLint: Manage Workspace Library Execution` command.
+
+If the extension detects a workspace version of TSLint, it will show a warning in the editor and in the status bar. You can click on the status bar entry to configure Workspace Library Execution as well.
+
 ## Configuration
 
 You can either configure the TSLint extension using a `tsconfig` or `jsconfig` as described [here][configuration], or configure it with VS Code settings. This requires VS Code 1.30+ and TS 3.2+. Note the VS Code based configuration overrides the `tsconfig` or `jsconfig` configuration.

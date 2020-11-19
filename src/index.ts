@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { FixAllProvider } from './fixAll';
 import { TsLintConfigurationStatusBarWarning } from './warningStatusBar';
+import { WorkspaceLibraryExecutionManager } from './workspaceTrustManager';
 
 const typeScriptExtensionId = 'vscode.typescript-language-features';
 const pluginId = 'typescript-tslint-plugin';
@@ -14,6 +15,8 @@ interface SynchronizedConfiguration {
     jsEnable?: boolean;
     exclude?: string | string[];
     packageManager?: 'npm' | 'pnpm' | 'yarn';
+
+    allowWorkspaceLibraryExecution?: boolean;
 }
 
 export async function activate(context: vscode.ExtensionContext) {
@@ -31,9 +34,17 @@ export async function activate(context: vscode.ExtensionContext) {
         return;
     }
 
+    const workspaceTrustManager = new WorkspaceLibraryExecutionManager(context);
+    context.subscriptions.push(workspaceTrustManager);
+
+    workspaceTrustManager.onDidChange(() => {
+        synchronizeConfiguration(api, workspaceTrustManager);
+        vscode.commands.executeCommand('typescript.restartTsServer');
+    });
+
     vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration(configurationSection)) {
-            synchronizeConfiguration(api);
+            synchronizeConfiguration(api, workspaceTrustManager);
         }
     }, undefined, context.subscriptions);
 
@@ -46,16 +57,18 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.languages.registerCodeActionsProvider(selector, new FixAllProvider(), FixAllProvider.metadata));
 
-    context.subscriptions.push(new TsLintConfigurationStatusBarWarning());
+    context.subscriptions.push(new TsLintConfigurationStatusBarWarning(workspaceTrustManager));
 
-    synchronizeConfiguration(api);
+    synchronizeConfiguration(api, workspaceTrustManager);
 }
 
-function synchronizeConfiguration(api: any) {
-    api.configurePlugin(pluginId, getConfiguration());
+function synchronizeConfiguration(api: any, workspaceTrustManager: WorkspaceLibraryExecutionManager) {
+    api.configurePlugin(pluginId, getConfiguration(workspaceTrustManager));
 }
 
-function getConfiguration(): SynchronizedConfiguration {
+function getConfiguration(
+    workspaceLibraryExecutionManager: WorkspaceLibraryExecutionManager,
+): SynchronizedConfiguration {
     const config = vscode.workspace.getConfiguration(configurationSection);
     const outConfig: SynchronizedConfiguration = {};
 
@@ -66,6 +79,8 @@ function getConfiguration(): SynchronizedConfiguration {
     withConfigValue(config, outConfig, 'configFile');
     withConfigValue(config, outConfig, 'exclude');
     withConfigValue(config, outConfig, 'packageManager');
+
+    outConfig.allowWorkspaceLibraryExecution = workspaceLibraryExecutionManager.allowWorkspaceLibraryExecution();
 
     return outConfig;
 }

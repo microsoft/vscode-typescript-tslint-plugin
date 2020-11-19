@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.0 - November 30, 2020
+- Pick up plugin version 1.0.0
+- By default, TSLint will no longer be loaded automatically from the workspace until the user takes some action. See the readme for more details.
+
 ## 1.2.2 - July 10, 2019
 - Pick up plugin version 0.5.4
 - Fixes disabled quick fix not having correct indent.

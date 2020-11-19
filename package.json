@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "1.2.2",
+    "version": "1.3.0",
     "private": true,
     "displayName": "TSLint",
     "description": "TSLint support for Visual Studio Code",
@@ -34,7 +34,9 @@
         "onLanguage:javascript",
         "onLanguage:javascriptreact",
         "onLanguage:typescript",
-        "onLanguage:typescriptreact"
+        "onLanguage:typescriptreact",
+        "onCommand:tslint.manageWorkspaceLibraryExecution",
+        "onCommand:tslint.resetWorkspaceLibraryExecution"
     ],
     "main": "./out/index.js",
     "contributes": {
@@ -149,7 +151,21 @@
                     "description": "The package manager you use to install node modules."
                 }
             }
-        }
+        },
+        "commands": [
+            {
+                "command": "tslint.manageWorkspaceLibraryExecution",
+                "title": "Manage workspace library execution",
+                "category": "TSLint",
+                "enablement": "editorLangId == typescript || editorLangId == typescriptreact"
+            },
+            {
+                "command": "tslint.resetWorkspaceLibraryExecution",
+                "title": "Reset workspace library execution",
+                "category": "TSLint",
+                "enablement": "editorLangId == typescript || editorLangId == typescriptreact"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
@@ -158,11 +174,11 @@
         "lint": "tslint -c tslint.json -p ."
     },
     "dependencies": {
-        "typescript-tslint-plugin": "0.5.4"
+        "typescript-tslint-plugin": "1.0.0"
     },
     "devDependencies": {
         "@types/vscode": "^1.32.0",
         "tslint": "^5.17.0",
-        "typescript": "^3.4.5"
+        "typescript": "^4.0.5"
     }
 }

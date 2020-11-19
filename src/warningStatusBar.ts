@@ -1,31 +1,47 @@
 import * as vscode from 'vscode';
 import { shouldBeLinted } from './utils';
+import { WorkspaceLibraryExecutionManager } from './workspaceTrustManager';
 
 export class TsLintConfigurationStatusBarWarning {
+
+    private readonly showHelpCommand = '_tslintPlugin.showHelp';
+
+    private readonly workspaceTrustManager: WorkspaceLibraryExecutionManager;
 
     private _disposables: vscode.Disposable[] = [];
     private readonly _statusBarItem: vscode.StatusBarItem;
 
     private _activeDocument: vscode.Uri | undefined = undefined;
 
-    private readonly command = '_tslintPlugin.showHelp';
+    public constructor(workspaceTrustManager: WorkspaceLibraryExecutionManager) {
+        this.workspaceTrustManager = workspaceTrustManager;
 
-    public constructor() {
-        this._disposables.push(vscode.commands.registerCommand(this.command, async () => {
-            const help = { title: 'Help', isCloseAffordance: true };
-            const close = { title: 'Close', isCloseAffordance: true };
+        this._disposables.push(vscode.commands.registerCommand(this.showHelpCommand, async () => {
+            const manageTrust: vscode.MessageItem = {
+                title: 'Manage Library Execution',
+                isCloseAffordance: true,
+            };
+
+            const help: vscode.MessageItem = { title: 'Help', isCloseAffordance: true };
+            const close: vscode.MessageItem = { title: 'Close', isCloseAffordance: true };
+
             const result = await vscode.window.showErrorMessage(this._statusBarItem.tooltip || 'TSLint Error',
-                help, close);
+                manageTrust,
+                help,
+                close);
 
             switch (result) {
                 case help:
                     return vscode.env.openExternal(
                         vscode.Uri.parse('https://github.com/microsoft/typescript-tslint-plugin#readme'));
+
+                case manageTrust:
+                    return this.workspaceTrustManager.showTrustUi();
             }
         }));
 
         this._statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 0);
-        this._statusBarItem.command = this.command;
+        this._statusBarItem.command = this.showHelpCommand;
 
         vscode.languages.onDidChangeDiagnostics((e) => {
             if (!this._activeDocument || !vscode.window.activeTextEditor) {
@@ -64,12 +80,17 @@ export class TsLintConfigurationStatusBarWarning {
         }
 
         const diagnostics = vscode.languages.getDiagnostics(activeTextEditor.document.uri);
-        const tsLintConfigError = diagnostics.find((diagnostic) =>
+        const failedToLoadError = diagnostics.find((diagnostic) =>
             diagnostic.source === 'tslint' && diagnostic.message.startsWith('Failed to load the TSLint library'));
 
-        if (tsLintConfigError) {
-            this._statusBarItem.text = '$(alert) TSLint';
-            this._statusBarItem.tooltip = tsLintConfigError.message;
+        const notUsingWorkspaceVersionError = diagnostics.find((diagnostic) =>
+            diagnostic.source === 'tslint'
+            && diagnostic.message.startsWith('Not using the local TSLint version found'));
+
+        if (failedToLoadError || notUsingWorkspaceVersionError) {
+            this._statusBarItem.text = '$(circle-slash) TSLint';
+            this._statusBarItem.color = new vscode.ThemeColor('errorForeground');
+            this._statusBarItem.tooltip = failedToLoadError?.message ?? notUsingWorkspaceVersionError?.message;
             this._statusBarItem.show();
         } else {
             this._statusBarItem.text = 'TSLint';
