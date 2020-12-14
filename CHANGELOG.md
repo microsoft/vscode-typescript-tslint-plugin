@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.3.1 - December 14, 2020
+- Catch error when resolving global tslint fails. Thanks @nickjs!
+
 ## 1.3.0 - November 30, 2020
 - Pick up plugin version 1.0.0
 - By default, TSLint will no longer be loaded automatically from the workspace until the user takes some action. See the readme for more details.
