@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.3.2 - December 14, 2020
+- Manually bump typescript-tslint-plugin version.
+
 ## 1.3.1 - December 14, 2020
 - Catch error when resolving global tslint fails. Thanks @nickjs!
 
