@@ -8,7 +8,7 @@
 
 ## 1.3.0 - November 30, 2020
 - Pick up plugin version 1.0.0
-- By default, TSLint will no longer be loaded automatically from the workspace until the user takes some action. See the readme for more details.
+- By default, TSLint will no longer be loaded automatically from the workspace until the user takes some action. See the readme for more details. This fix was made in response to [CVE-2020-17150](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17150).
 
 ## 1.2.2 - July 10, 2019
 - Pick up plugin version 0.5.4
