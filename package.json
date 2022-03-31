@@ -1,6 +1,6 @@
 {
     "name": "vscode-typescript-tslint-plugin",
-    "version": "1.3.3",
+    "version": "1.3.4",
     "private": true,
     "displayName": "TSLint",
     "description": "TSLint support for Visual Studio Code",
@@ -174,7 +174,7 @@
         "lint": "tslint -c tslint.json -p ."
     },
     "dependencies": {
-        "typescript-tslint-plugin": "1.0.1"
+        "typescript-tslint-plugin": "1.0.2"
     },
     "devDependencies": {
         "@types/vscode": "^1.32.0",
