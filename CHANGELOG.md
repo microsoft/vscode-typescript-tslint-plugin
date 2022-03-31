@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.3.4 - March 31, 2022
+- Pick up latest tslint plugin to ignore in-memory files.
+- Making more clear that this extension has also been deprecated.
+
 ## 1.3.2 - December 14, 2020
 - Manually bump typescript-tslint-plugin version.
 
